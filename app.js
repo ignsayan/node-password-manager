@@ -1,4 +1,7 @@
-require('dotenv').config()
+import 'dotenv/config'
+import express from 'express'
+import cors from 'cors'
+import passwordRoute from './routes/passwordRoute.js'
 
 const policy = {
     origin: [
@@ -7,9 +10,6 @@ const policy = {
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }
-
-const express = require('express')
-const cors = require('cors')
 
 const app = express()
 const port = process.env.PORT
@@ -21,5 +21,4 @@ app.listen(port, () => {
 })
 
 // Registered routes
-const passwordRoute = require('./routes/passwordRoute')
 app.use('/passwords', passwordRoute)

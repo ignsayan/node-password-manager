@@ -1,4 +1,5 @@
-const express = require('express');
+import express from 'express'
+
 const route = express.Router();
 
 route.get('/', (req, res) => {
@@ -10,4 +11,4 @@ route.get('/', (req, res) => {
     res.send(data)
 });
 
-module.exports = route;
+export default route;
