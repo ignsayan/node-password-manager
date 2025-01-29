@@ -1,32 +1,32 @@
 import express from 'express'
-import fs from 'fs'
+import Password from '../models/Password.js'
 
 const route = express.Router()
 
-const path = 'databases/store.json'
-const file = fs.readFileSync(path, 'utf-8')
-const data = JSON.parse(file)
-
-route.get('/', (req, res) => {
-    res.send(data)
-})
-
-route.post('/store', (req, res) => {
+route.get('/', async (req, res) => {
     try {
-        data.push(req.body)
-        fs.writeFileSync(path, JSON.stringify(data))
-        res.send(data)
+        const response = await Password.find()
+        res.send(response)
     } catch (error) {
         res.status(500).send(error.message)
     }
 })
 
-route.delete('/delete/:uuid', (req, res) => {
+route.post('/store', async (req, res) => {
     try {
-        const index = data.findIndex((item) => item.uuid === req.params.uuid)
-        data.splice(index, 1)
-        fs.writeFileSync(path, JSON.stringify(data))
-        res.send(data)
+        let data = req.body
+        const response = await Password.create(data)
+        res.status(201).send(response)
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+})
+
+route.delete('/delete/:id', async (req, res) => {
+    try {
+        let id = req.params.id
+        const response = await Password.findByIdAndDelete(id)
+        res.status(200).send(response)
     } catch (error) {
         res.status(500).send(error.message)
     }

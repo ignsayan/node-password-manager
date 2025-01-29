@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
+import DatabaseConnection from './configs/database.js'
 import {
     passwordRoute,
 } from './routes/index.js'
@@ -13,20 +14,14 @@ const policy = {
     allowedHeaders: ['Content-Type', 'Authorization']
 }
 
+DatabaseConnection()
+
 const app = express()
-const port = process.env.PORT
 app.use(express.json())
 app.use(cors(policy))
 
-// Listener
-app.listen(port, () => {
-    console.log(`App running at port ${port}`)
-})
-
-// Default viewpoint
-app.get('/', (req, res) => {
-    res.send('Server is running')
-})
-
 // Registered routes
 app.use('/passwords', passwordRoute)
+
+// Listener
+app.listen(process.env.PORT, () => console.log('✅ Server started'))
