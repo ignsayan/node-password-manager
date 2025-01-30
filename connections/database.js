@@ -8,7 +8,7 @@ const database = process.env.DB_NAME
 const params = process.env.DB_PARAMS
 
 // Connection string
-const uri = `mongodb+srv://${username}:${password}@${host}/?${params}&appName=${database}`
+const uri = `mongodb+srv://${username}:${password}@${host}/${database}?${params}`
 const options = { serverApi: { version: '1', strict: true, deprecationErrors: true } }
 
 // Establish connection

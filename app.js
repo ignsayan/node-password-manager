@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
-import DatabaseConnection from './configs/database.js'
+import DatabaseConnection from './connections/database.js'
 import {
     passwordRoute,
 } from './routes/index.js'
