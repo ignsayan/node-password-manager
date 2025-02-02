@@ -4,6 +4,7 @@ import cors from 'cors'
 import DatabaseConnection from './connections/database.js'
 import {
     passwordRoute,
+    userRoute,
 } from './routes/index.js'
 
 const policy = {
@@ -14,7 +15,7 @@ const policy = {
     allowedHeaders: ['Content-Type', 'Authorization']
 }
 
-DatabaseConnection()
+DatabaseConnection();
 
 const app = express()
 app.use(express.json())
@@ -22,6 +23,7 @@ app.use(cors(policy))
 
 // Registered routes
 app.use('/passwords', passwordRoute)
+app.use('/users', userRoute)
 
 // Listener
-app.listen(process.env.PORT, () => console.log('✅ Server started'))
+app.listen(process.env.APP_PORT, () => console.log('✅ Server started'))

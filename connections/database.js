@@ -8,7 +8,10 @@ const database = process.env.DB_NAME
 const params = process.env.DB_PARAMS
 
 // Connection string
-const uri = `mongodb+srv://${username}:${password}@${host}/${database}?${params}`
+const uri = process.env.APP_ENVIRONMENT === 'local'
+    ? `mongodb://localhost:27017/${database}`
+    : `mongodb+srv://${username}:${password}@${host}/${database}?${params}`
+
 const options = { serverApi: { version: '1', strict: true, deprecationErrors: true } }
 
 // Establish connection
