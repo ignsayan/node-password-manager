@@ -26,4 +26,4 @@ app.use('/passwords', passwordRoute)
 app.use('/users', userRoute)
 
 // Listener
-app.listen(process.env.APP_PORT, () => console.log('✅ Server started'))
+app.listen(process.env.PORT, () => console.log('✅ Server started'))
