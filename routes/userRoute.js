@@ -5,7 +5,7 @@ const route = express.Router()
 
 route.post('/', async (req, res) => {
     try {
-        const user = await User.findOne({ uid: req.body.uid })
+        const user = await User.findOne({ email: req.body.email })
         if (user) return res.status(200).send(user)
         const response = await User.create(req.body)
         res.status(201).send(response)
