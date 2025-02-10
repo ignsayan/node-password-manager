@@ -12,7 +12,7 @@ const passwordSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    key: {
+    password: {
         type: String,
         required: true,
         select: false,
