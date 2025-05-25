@@ -1,6 +1,5 @@
 import express from 'express'
 import Password from '../models/Password.js'
-import User from '../models/User.js'
 import mongoose from 'mongoose'
 
 const route = express.Router()

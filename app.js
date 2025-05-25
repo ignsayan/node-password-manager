@@ -2,6 +2,7 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import DatabaseConnection from './connections/database.js'
+import home from './templates/home.js'
 import {
     passwordRoute,
     userRoute,
@@ -24,6 +25,8 @@ app.use(cors(policy))
 // Registered routes
 app.use('/passwords', passwordRoute)
 app.use('/users', userRoute)
+
+app.get('/', home);
 
 // Listener
 app.listen(process.env.PORT, () => console.log('✅ Server started'))
