@@ -1,12 +1,12 @@
-import 'dotenv/config'
-import express from 'express'
-import cors from 'cors'
-import DatabaseConnection from './connections/database.js'
-import home from './templates/home.js'
+import 'dotenv/config';
+import express from 'express';
+import cors from 'cors';
+import DatabaseConnection from './connections/database.js';
+import home from './templates/home.js';
 import {
     passwordRoute,
     userRoute,
-} from './routes/index.js'
+} from './routes/index.js';
 
 const policy = {
     origin: [

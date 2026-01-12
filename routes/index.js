@@ -1,5 +1,5 @@
-import passwordRoute from './passwordRoute.js'
-import userRoute from './userRoute.js'
+import passwordRoute from './passwordRoute.js';
+import userRoute from './userRoute.js';
 
 export {
     passwordRoute,
